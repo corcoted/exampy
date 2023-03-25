@@ -1,0 +1,15 @@
+name: env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - scipy
+  - jupyter
+  - ipykernel
+  - nb_conda_kernels
+  - pip
+  - pip:
+    - sigfig
+
+prefix: ./env

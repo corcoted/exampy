@@ -1,0 +1,39 @@
+% !TeX spellcheck = en_US
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+
+\documentclass[noanswers,notitlepage,11pt,letterpaper]{exam} % use larger type; default would be 10pt
+\usepackage{amsmath}
+
+%misc formatting packages
+\usepackage{graphicx}
+%\usepackage{wrapfig}
+%\usepackage{esint}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{pdfpages}
+
+\usepackage{libertinus}
+
+% other LaTeX packages.....
+\usepackage[rmargin=0.75in,lmargin=0.75in,tmargin=1in,bmargin=1in]{geometry} % See geometry.pdf to learn the layout options. There are lots.
+
+\usepackage{graphicx} % support the \includegraphics command and options
+\usepackage{enumerate}
+%\usepackage{hyperref}
+
+\title{\mytitle}
+\author{\myauthor}
+\date{\mydate} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+%headers and footers
+
+\pagestyle{headandfoot}
+\firstpageheader{}{}{Name: \hrule{2in}}
+\runningheader{{\myauthor}}{\mytitle - \mydate}{Initials: \rule{1.5in}{1pt}}
+\firstpagefooter{}{Page \thepage\ of \numpages}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}} 

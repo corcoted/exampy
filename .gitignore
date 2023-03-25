@@ -1,0 +1,13 @@
+/env/
+*.pdf
+*.aux
+*.log
+*.dvi
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+/output/
+!/output/figs/*
+!/output/footer.tex
+!/output/header1.tex
+!/output/header2.tex
