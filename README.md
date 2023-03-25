@@ -3,6 +3,8 @@ python script for generating randomized exams with output to LaTeX
 
 (c) 2023 Ted Corcovilos
 
+USER BEWARE - This is very much spaghetti code.  Use at your own risk.
+
 ## Contents
 - `exampy.py` - The python script itself (see below)
 - `header1.tex` - Preamble for the output `.tex` files.  Put packages, formatting, etc. here.
