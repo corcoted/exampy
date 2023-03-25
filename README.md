@@ -7,10 +7,11 @@ USER BEWARE - This is very much spaghetti code.  Use at your own risk.
 
 ## Contents
 - `exampy.py` - The python script itself (see below)
-- `header1.tex` - Preamble for the output `.tex` files.  Put packages, formatting, etc. here.
-- `header2.tex` - Opening pages of the exam (cover sheet, etc.)
-- `footer.tex` - Closing pages of the exam (reference material etc.)
-- `figs/` - folder for storing figures
+- `output/` - folder containing all of the generated LaTeX files and their includes:
+  - `header1.tex` - Preamble for the output `.tex` files.  Put packages, formatting, etc. here.
+  - `header2.tex` - Opening pages of the exam (cover sheet, etc.)
+  - `footer.tex` - Closing pages of the exam (reference material etc.)
+  - `figs/` - folder for storing figures
 - `environment.yml` - conda python environment file containing suggested packages
   - Use these steps to create and activate the environment:
     - `conda env create -f environment.yml -p ./env`
@@ -19,7 +20,7 @@ USER BEWARE - This is very much spaghetti code.  Use at your own risk.
 - `.latexmkrc` - suggested `latexmk` configuration
 
 ## To use
-- Customize the provided `.tex` file: `header1.tex`, `header2.tex`, and `footer.tex`.
+- Customize the provided `.tex` files in the `output/` folder: `header1.tex`, `header2.tex`, and `footer.tex`.
 - Configure `exampy.py`
   - `fileprefix` is a string for the output filename prefix
   - `examlist` is a list of exam version.  Each element of the list is pair containing a string for the version name and an integer for the random seed for that version (to ensure the same results if the script is re-run).
@@ -28,5 +29,7 @@ USER BEWARE - This is very much spaghetti code.  Use at your own risk.
 - The exam questions are in `exampy.py`, starting around line 105.  Each question consists of the following strings:
   - `qtext` - the text of the question
   - `thisalist` - a list of strings containing the answer choices.  *The first list item is the correct answer* and the other items are the distractors.
-  - These strings are raw LaTeX text.  The may include calculated values using python formatted strings.
+  - The strings are raw LaTeX text and will be written verbatim to the output `.tex` files
+    - They may include calculated and/or randomized values using python formatted strings.
+    - Any additional source file (e.g. figure files, `.tex` files for inclusion as-is) must go in the `output/` folder and will be referenced relative to that path.
   - Each question block in the code should end with `addquestion(qtext,thisalist)`.

@@ -126,8 +126,12 @@ addquestion(qtext,thisalist)
 
 # Question 1
 
-a = 3.0
-b = 4.0
+# Some constants for the following question.
+# Note that these can be randomized, but it is up to the user to check that
+# the values are feasible.
+
+a = 3.0 + rng.uniform(-1,1)
+b = 4.0 + rng.uniform(-2,2)
 
 # below is an example showing some raw LaTeX and formatted strings.
 # Be careful if you need to escape characters, e.g. \ and { in LaTeX code.
@@ -135,13 +139,13 @@ b = 4.0
 
 # some rounding functions are defined above for convenience.
 
-qtext=r'The perpendicular legs of a right triangle have lengths $a='+f'{round2(a)}'+r'''\,\mathrm{m}$ and $b='''+f'{round2(b)}'+r'\,\mathrm{m}$.  What is the length of the hypotenuse?'
+qtext=r'The perpendicular legs of a right triangle have lengths $a='+f'{round2(a)}'+r'\,\mathrm{m}$ and $b='+f'{round2(b)}'+r'\,\mathrm{m}$.  What is the length of the hypotenuse?'
 
 # here are some calculated answer choices.  The first entry is the correct answer
 thisalist=[
     f"${round2(np.sqrt(a**2+b**2))}"+r"\,\mathrm{m}$",
     f"${round2(a+b)}"+r"\,\mathrm{m}$",
-    f"${round2(np.sqrt(b**2-a**2))}"+r"\,\mathrm{m}$",
+    f"${round2(np.sqrt(np.abs(b**2-a**2)))}"+r"\,\mathrm{m}$",
     f"${round2(0.5*a*b)}"+r"\,\mathrm{m^2}$",
     f"${round2(np.arctan(b/a)*180./np.pi)}"+r"^\circ$"]
 
@@ -186,7 +190,7 @@ if True:
     
         f.write(r'\begin{questions}'+"\n")
         # Write the questions
-        # TODO shuffle
+        
         for q in range(len(qlist)):
             #f.write(f"{q+1}.  ")
             f.write(qlist[qorder[q]])
