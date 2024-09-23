@@ -82,11 +82,56 @@ def addquestion(q,al,pretext=""):
     qlist.append(pretext+r"% Q"+f"{qcount}\n"+r"\question "+q+"\n"+atext)
     keylist.append(alphabet[key])
 
-# helpers for rounding
-round2 = lambda x: sf.round(x,2,output_type=str)
-round3 = lambda x: sf.round(x,3,output_type=str)
-sci2 = lambda x: sf.round(x,2,notation='sci')
-sci3 = lambda x: sf.round(x,3,notation='sci')
+# helpers for rounding, including explicit sign in string reps.
+
+def round2(x,plus=False):
+    if x>=0. and plus:
+        s = "+"+sf.round(x,2,output_type=str)
+    else:
+        s = sf.round(x,2,output_type=str)
+    return s
+
+def round3(x,plus=False):
+    if x>=0. and plus:
+        s = "+"+sf.round(x,3,output_type=str)
+    else:
+        s = sf.round(x,3,output_type=str)
+    return s
+
+def dec1(x,plus=False):
+    if x>=0. and plus:
+        s = "+"+sf.round(x,decimals=1,output_type=str)
+    else:
+        s = sf.round(x,decimals=1,output_type=str)
+    return s
+
+def dec2(x,plus=False):
+    if x>=0. and plus:
+        s = "+"+sf.round(x,decimals=2,output_type=str)
+    else:
+        s = sf.round(x,decimals=2,output_type=str)
+    return s
+
+def dec3(x,plus=False):
+    if x>=0. and plus:
+        s = "+"+sf.round(x,decimals=3,output_type=str)
+    else:
+        s = sf.round(x,decimals=3,output_type=str)
+    return s
+def sci2(x,plus=False):
+    if x>=0. and plus:
+        s = "+"+sf.round(x,2,notation='sci')
+    else:
+        s = sf.round(x,2,notation='sci')
+    return s
+
+def sci3(x,plus=False):
+    if x>=0. and plus:
+        s = "+"+sf.round(x,3,notation='sci')
+    else:
+        s = sf.round(x,3,notation='sci')
+    return s
+
 
 headertext = r'''
 \include{header1.tex}
