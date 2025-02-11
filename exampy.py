@@ -41,22 +41,25 @@ qshuffle=True
 # Reminder: counting starts from zero
 question_groups=[[0,1]]#[[0,1,[2,3],4,5],[6,7,8,9,10],[11,12,13,14,15]]
 
-def print_answers(alist):
+def print_answers(alist: list):
     '''
     Returns the answer block as a string and the index of the correct answer.
     alist = list of answers, with the correct answer first
     '''
     alphabet = "ABCDE"
+    if len(alist)==1:
+        # then this is not multiple choice
+        return "",alist[0]
     order = rng.permutation(len(alist))
     correct = np.argmin(order)
     output = r"\begin{choices}"+"\n"
     for i in range(len(alist)):
         if i == correct:
-            output=output+(r"\CorrectChoice "+alist[order[i]]+"\n")
+            output=output+(r"\CorrectChoice "+alist[order[i]]+f"% {alphabet[order[i]]}" +"\n")
         else:
-            output=output+(r"\choice "+alist[order[i]]+"\n")
+            output=output+(r"\choice "+alist[order[i]]+f"% {alphabet[order[i]]}"+"\n")
     output = output+r"\end{choices}"+"\n"
-    return output, correct
+    return output, alphabet[correct]
 
 alphabet = "ABCDE"
 
@@ -80,7 +83,7 @@ def addquestion(q,al,pretext=""):
     qcount=qcount+1
     atext, key = print_answers(al)
     qlist.append(pretext+r"% Q"+f"{qcount}\n"+r"\question "+q+"\n"+atext)
-    keylist.append(alphabet[key])
+    keylist.append(key)
 
 # helpers for rounding, including explicit sign in string reps.
 
