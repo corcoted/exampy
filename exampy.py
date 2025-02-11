@@ -199,6 +199,19 @@ thisalist=[
 
 addquestion(qtext,thisalist)
 
+## Here is a short answer question type.  Notice the answer format.
+## Also, here is an example of using pretext before the question.
+
+pretext = "Answer the following question:"
+
+qtext = r'''
+Who published the paper "\emph{Zur Elektrodynamik bewegter Körper} (On the Electrodynamics of Moving Bodies)" in 1905?
+'''
+
+thisalist=["Albert Einstein"]
+
+addquestion(qtext,thisalist,pretext)
+
 # Done with the data
 
 def flatten(lis):
