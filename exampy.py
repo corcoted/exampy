@@ -244,7 +244,7 @@ if True:
         qorder = list(range(len(qlist)))
     
     # begin output
-    with open(fileout, "w") as f:
+    with open(fileout, "w", encoding="utf-8") as f:
         # TODO check breaks between writes
         # Write the header
         f.write(headertext)
@@ -282,7 +282,7 @@ if True:
         # Write the footer
         f.write(footertext)
     
-    with open(keyout, "w") as f:
+    with open(keyout, "w", encoding="utf-8") as f:
         f.write(f"Key for Form {thisexam[0]}\n")
         f.write( "--------------\n")
         for n, i in enumerate(qorder):
