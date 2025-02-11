@@ -1,7 +1,7 @@
 # Exampy
 python script for generating randomized exams with output to LaTeX
 
-(c) 2023 Ted Corcovilos
+(c) 2021-2025 Ted Corcovilos
 
 USER BEWARE - This is very much spaghetti code.  Use at your own risk.
 
@@ -27,8 +27,10 @@ USER BEWARE - This is very much spaghetti code.  Use at your own risk.
   - Various strings that need to be defined are included as "XXX".  Search for that string to find and update these. These are things like the course name and exam date.  Many of these are in `headertext`.
   - `question_groups` is a nested list of groups of questions to keep together during randomization (e.g. all of the questions on a single topic).
 - The exam questions are in `exampy.py`, starting around line 105.  Each question consists of the following strings:
+  - `pretext` *(optional)* - text preceeding the question block (e.g. section headers or instuctions for a group of problems).
   - `qtext` - the text of the question
   - `thisalist` - a list of strings containing the answer choices.  *The first list item is the correct answer* and the other items are the distractors.
+    - For free response questions use a list with a single element: `thisalist = ["This is the answer."]` 
   - The strings are raw LaTeX text and will be written verbatim to the output `.tex` files
     - They may include calculated and/or randomized values using python formatted strings.
     - Any additional source file (e.g. figure files, `.tex` files for inclusion as-is) must go in the `output/` folder and will be referenced relative to that path.
