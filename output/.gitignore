@@ -1,1 +1,9 @@
 exam*
+*.aux
+*.log
+*.xdv
+*.fls
+*.fdb_latexmk
+*.out
+*.synctex
+*.synctex.gz
