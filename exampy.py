@@ -277,6 +277,7 @@ if True:
             for k in range(len(keylist)):
                 f.write(r"\item "+f"{keylist[qorder[k]]} \n")
             f.write(r'\end{enumerate}'+"\n"+r'\fi'+"\n")
+            print("Number of questions: ",len(keylist))
             print("Answers: ",[keylist[i] for i in qorder])
         # Write the footer
         f.write(footertext)
