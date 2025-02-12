@@ -135,7 +135,14 @@ def sci3(x,plus=False):
         s = sf.round(x,3,notation='sci')
     return s
 
-
+def vector_round(x: list, prec=3):
+    # rounds a list of floats to the same decimal place
+    # prec is the number of sigfigs of the largest list element
+    x = np.asarray(x)
+    oom = np.floor(np.max(np.log10(np.abs(x))))
+    up_x = x/10.0**oom
+    return [(10.0**oom)*sf.round(x,decimals=prec-1) for x in up_x]
+    
 headertext = r'''
 \include{header1.tex}
 % Define the following to propagate the title, author, etc. through the titlepage and headers
