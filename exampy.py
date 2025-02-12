@@ -39,7 +39,7 @@ rng=np.random.default_rng(seed=thisexam[1])
 qshuffle=True
 #! Check that the list below contains the correct number of questions
 # Reminder: counting starts from zero
-question_groups=[[0,1]]#[[0,1,[2,3],4,5],[6,7,8,9,10],[11,12,13,14,15]]
+question_groups=[[0,1],[2]]#[[0,1,[2,3],4,5],[6,7,8,9,10],[11,12,13,14,15]]
 
 def print_answers(alist: list):
     '''
@@ -185,8 +185,8 @@ addquestion(qtext,thisalist)
 # Note that these can be randomized, but it is up to the user to check that
 # the values are feasible.
 
-a = 3.0 + rng.uniform(-1,1)
-b = 4.0 + rng.uniform(-2,2)
+a = 3.0 + rng.integers(-1,1)
+b = 4.0 + rng.integers(-2,2)
 
 # below is an example showing some raw LaTeX and formatted strings.
 # Be careful if you need to escape characters, e.g. \ and { in LaTeX code.
@@ -196,13 +196,18 @@ b = 4.0 + rng.uniform(-2,2)
 
 qtext=r'The perpendicular legs of a right triangle have lengths $a='+f'{round2(a)}'+r'\,\mathrm{m}$ and $b='+f'{round2(b)}'+r'\,\mathrm{m}$.  What is the length of the hypotenuse?'
 
+# The function below formats the numerical answers
+# as appropriate for this one question
+thisfmt = lambda x: f"${round2(x)}"+r"\,\mathrm{m}$"
+
 # here are some calculated answer choices.  The first entry is the correct answer
 thisalist=[
-    f"${round2(np.sqrt(a**2+b**2))}"+r"\,\mathrm{m}$",
-    f"${round2(a+b)}"+r"\,\mathrm{m}$",
-    f"${round2(np.sqrt(np.abs(b**2-a**2)))}"+r"\,\mathrm{m}$",
-    f"${round2(0.5*a*b)}"+r"\,\mathrm{m^2}$",
-    f"${round2(np.arctan(b/a)*180./np.pi)}"+r"^\circ$"]
+    thisfmt(np.sqrt(a**2+b**2)),
+    thisfmt(a+b),
+    thisfmt(np.sqrt(np.abs(b**2-a**2))),
+    thisfmt(0.5*a*b),
+    thisfmt(np.arctan(b/a)*180./np.pi)
+    ]
 
 addquestion(qtext,thisalist)
 
