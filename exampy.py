@@ -139,8 +139,8 @@ def sci3(x,plus=False):
 headertext = r'''
 \include{header1.tex}
 % Define the following to propagate the title, author, etc. through the titlepage and headers
-\newcommand{\mytitle}{Exam XXX - '''+\
-f'Form {exam_version}'+\
+\newcommand{\mytitle}{Exam XXX -- '''+\
+f'Form {exam_version} '+\
 r'''} % exam name
 \newcommand{\myauthor}{XXX} % course name
 \newcommand{\mydate}{XXX} % exam date
